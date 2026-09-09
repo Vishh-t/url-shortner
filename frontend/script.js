@@ -1,7 +1,7 @@
 // ---- Configuration ----
 // Point this at your deployed backend once you host it (e.g. Render/Railway URL).
 // Left as localhost for local development.
-const API_BASE_URL = "http://localhost:3000";
+const API_BASE_URL = "https://url-shortner-production-cb4b9.up.railway.app";
 
 // ---- Element references ----
 const form = document.getElementById("urlForm");
