@@ -113,8 +113,8 @@ Backend runs on localhost:3000. Just open frontend/index.html in your browser, n
 Backend goes on Render as a web service (build: `npm install`, start: `npm start`). Frontend can just be a static site, or GitHub Pages. Once the backend has a live URL, update `API_BASE_URL` in script.js and add the frontend's URL to ALLOWED_ORIGINS.
 
 Live links:
-- Backend: 
-- Frontend: 
+- Backend: https://url-shortner-production-cb4b9.up.railway.app
+- Frontend: https://url-shortner-bay-nine.vercel.app
 
 ## Notes
 
