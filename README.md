@@ -121,3 +121,15 @@ Live links:
 - Duplicate submissions return the existing short code instead of creating a new row
 - Bad URLs get rejected before touching the DB
 - shortCode has a unique index in Mongo as a backup in case two requests race each other
+
+# My Thinking Process
+
+Built a URL shortener — Express backend, plain HTML/JS frontend, MongoDB Atlas for storage. Backend's on Railway, frontend's on Vercel.
+
+When you submit a URL, it validates it first, then checks if it's already been shortened — if so it just returns the existing code instead of making a duplicate. Otherwise it generates a 6-char code with nanoid and saves it. Hitting the short link bumps the click count atomically and redirects you. It also has a stats endpoint so you can check click counts without triggering a redirect.
+
+Handled the usual edge cases — bad URLs get rejected before hitting the DB, duplicate short codes can't happen since there's a unique index in Mongo as backup, and there's a global error handler so nothing crashes ugly.
+
+# Live URL
+
+- live app : https://url-shortner-bay-nine.vercel.app
