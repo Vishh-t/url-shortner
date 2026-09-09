@@ -1,1 +1,230 @@
-/* ANY STYLES YOU WANT TO APPLY */
+:root {
+  --ink: #14171c;
+  --paper: #f7f5f0;
+  --line: #d8d3c7;
+  --accent: #1f5f4f;
+  --danger: #a3341f;
+  --muted: #6b6f76;
+  --radius: 4px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  line-height: 1.5;
+}
+
+.wrap {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem 6rem;
+}
+
+.hero {
+  margin-bottom: 2.5rem;
+}
+
+.hero__mark {
+  font-family: "Courier New", monospace;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  color: var(--accent);
+  margin: 0 0 0.75rem;
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  line-height: 1.1;
+  margin: 0 0 0.75rem;
+  font-weight: 500;
+}
+
+.hero__sub {
+  color: var(--muted);
+  font-size: 1.05rem;
+  max-width: 34ch;
+  margin: 0;
+}
+
+.panel {
+  display: flex;
+  gap: 0.6rem;
+  border-bottom: 2px solid var(--ink);
+  padding-bottom: 0.75rem;
+}
+
+#longUrlInput {
+  flex: 1;
+  font: inherit;
+  font-size: 1.05rem;
+  border: none;
+  background: transparent;
+  color: var(--ink);
+  padding: 0.4rem 0.1rem;
+}
+
+#longUrlInput:focus {
+  outline: none;
+}
+
+#longUrlInput::placeholder {
+  color: #a6a297;
+}
+
+#submit-btn {
+  font-family: "Courier New", monospace;
+  font-size: 0.9rem;
+  letter-spacing: 0.03em;
+  background: var(--ink);
+  color: var(--paper);
+  border: none;
+  border-radius: var(--radius);
+  padding: 0.6rem 1.1rem;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+#submit-btn:hover {
+  background: var(--accent);
+}
+
+#submit-btn:disabled {
+  background: var(--muted);
+  cursor: wait;
+}
+
+#submit-btn:focus-visible,
+#copy-btn:focus-visible,
+#longUrlInput:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.error {
+  color: var(--danger);
+  font-size: 0.95rem;
+  margin-top: 1rem;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.result {
+  margin-top: 2rem;
+  padding: 1.25rem 1.4rem;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.result__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+#short-link {
+  font-family: "Courier New", monospace;
+  font-size: 1.15rem;
+  color: var(--accent);
+  text-decoration: none;
+  word-break: break-all;
+}
+
+#short-link:hover {
+  text-decoration: underline;
+}
+
+#copy-btn {
+  flex-shrink: 0;
+  font-family: "Courier New", monospace;
+  font-size: 0.8rem;
+  background: transparent;
+  border: 1px solid var(--ink);
+  border-radius: var(--radius);
+  padding: 0.35rem 0.7rem;
+  cursor: pointer;
+}
+
+#copy-btn:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.result__meta {
+  margin: 0.7rem 0 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+#original-url-display {
+  word-break: break-all;
+}
+
+.history {
+  margin-top: 3rem;
+}
+
+.history h2 {
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-weight: 400;
+  margin: 0 0 0.75rem;
+  border-top: 1px solid var(--line);
+  padding-top: 1.5rem;
+}
+
+#history-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+#history-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 0.9rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px dashed var(--line);
+}
+
+#history-list a {
+  color: var(--accent);
+  font-family: "Courier New", monospace;
+  text-decoration: none;
+}
+
+#history-list a:hover {
+  text-decoration: underline;
+}
+
+#history-list .clicks {
+  color: var(--muted);
+  flex-shrink: 0;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}

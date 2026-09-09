@@ -62,4 +62,62 @@ These references cover the foundational concepts needed to solve the problem:
 Make sure you store URLs in a persistent database and redirect incoming short code requests correctly.
 Deployed working URL links, and clear explanation of thought process in `README.md`.
 
- 
+---
+---
+
+# My Solution
+
+URL shortener with a Node/Express backend and a plain HTML/JS frontend. Backend talks to MongoDB Atlas through Mongoose.
+
+## How it works
+
+You paste a link into the form, frontend sends it to `POST /api/shorten`. Backend checks the URL is valid, checks if it's already been shortened before (if so just returns the existing code instead of making a duplicate), otherwise generates a 6-char code with nanoid and saves it to Atlas.
+
+Hitting `/:shortCode` looks it up, bumps the click count, and redirects. If the code doesn't exist you get a 404. There's also `/api/stats/:shortCode` if you just want to check the click count without triggering a redirect.
+
+## Folder structure
+
+```
+backend/
+  index.js
+  config/db.js
+  models/Url.js
+  controllers/urlController.js
+  routes/urlRoutes.js
+frontend/
+  index.html
+  style.css
+  script.js
+```
+
+## Running it locally
+
+```bash
+cd backend
+npm install
+cp .env.example .env   # fill in MONGO_URI
+npm start
+```
+
+Backend runs on localhost:3000. Just open frontend/index.html in your browser, no build step needed. If you're opening it as a file:// URL make sure ALLOWED_ORIGINS in .env is set to * or CORS will block it.
+
+## .env variables
+
+- `MONGO_URI` - Atlas connection string
+- `PORT` - defaults to 3000
+- `BASE_URL` - used to build the short link
+- `ALLOWED_ORIGINS` - CORS whitelist
+
+## Deployment
+
+Backend goes on Render as a web service (build: `npm install`, start: `npm start`). Frontend can just be a static site, or GitHub Pages. Once the backend has a live URL, update `API_BASE_URL` in script.js and add the frontend's URL to ALLOWED_ORIGINS.
+
+Live links:
+- Backend: 
+- Frontend: 
+
+## Notes
+
+- Duplicate submissions return the existing short code instead of creating a new row
+- Bad URLs get rejected before touching the DB
+- shortCode has a unique index in Mongo as a backup in case two requests race each other

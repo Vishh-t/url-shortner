@@ -9,7 +9,43 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-   <!-- 1. TODO: Expand this UI. Add a container to display the generated short link or any errors. -->
+  <main class="wrap">
+    <header class="hero">
+      <p class="hero__mark">snip/</p>
+      <h1>Turn long links<br />into short ones.</h1>
+      <p class="hero__sub">Paste a URL, get a compact alias, watch the clicks come in.</p>
+    </header>
+
+    <form id="urlForm" class="panel" autocomplete="off">
+      <label for="longUrlInput" class="sr-only">Long URL</label>
+      <input
+        type="url"
+        id="longUrlInput"
+        name="longUrl"
+        placeholder="https://example.com/a/very/long/path?with=params"
+        required
+      />
+      <button type="submit" id="submit-btn">Shorten</button>
+    </form>
+
+    <p id="error-message" class="error hidden"></p>
+
+    <section id="result" class="result hidden">
+      <div class="result__row">
+        <a id="short-link" href="#" target="_blank" rel="noopener"></a>
+        <button id="copy-btn" type="button">Copy</button>
+      </div>
+      <p class="result__meta">
+        <span id="click-count">0</span> clicks ·
+        originally <span id="original-url-display"></span>
+      </p>
+    </section>
+
+    <section id="history-section" class="history hidden">
+      <h2>This session</h2>
+      <ul id="history-list"></ul>
+    </section>
+  </main>
 
     <script src="script.js"></script>
 </body>
